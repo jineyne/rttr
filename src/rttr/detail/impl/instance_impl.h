@@ -69,6 +69,15 @@ RTTR_INLINE instance::instance(T& data) RTTR_NOEXCEPT
     static_assert(!std::is_same<argument, T>::value, "Don't use the instance class for forwarding an argument!");
 }
 
+template <typename T, typename Tp>
+RTTR_INLINE instance::instance(T &data, type type) noexcept
+:   m_data_container(detail::data_address_container{
+                     type, type.get_wrapped_type(),
+                     detail::as_void_ptr(detail::raw_addressof(data)), detail::as_void_ptr(detail::wrapped_raw_addressof(data))
+}){
+    static_assert(!std::is_same<argument, T>::value, "Don't use the instance class for forwarding an argument!");
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////
 
 template<typename Target_Type>

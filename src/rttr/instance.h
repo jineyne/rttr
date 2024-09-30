@@ -77,6 +77,14 @@ public:
     RTTR_INLINE instance(T& data) RTTR_NOEXCEPT;
 
     /*!
+     * \brief Creates an instance object from type \p T.
+     *
+     * \remark Internally, the instance class will hold a reference to the address of the given object \p data.
+     */
+    template<typename T, typename Tp = decay_instance_t<T>>
+    RTTR_INLINE instance(T& data, type type) RTTR_NOEXCEPT;
+
+    /*!
      * \brief This function will try to convert the underlying instance to the given type \p Target_Type*.
      *        When the conversion succeeds, a valid pointer will be returned. Otherwise a nullptr.
      *
