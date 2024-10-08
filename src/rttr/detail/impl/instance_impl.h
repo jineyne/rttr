@@ -70,7 +70,7 @@ RTTR_INLINE instance::instance(T& data) RTTR_NOEXCEPT
 }
 
 template <typename T, typename Tp>
-RTTR_INLINE instance::instance(T &data, type type) noexcept
+RTTR_INLINE instance::instance(T &data, type type) RTTR_NOEXCEPT
 :   m_data_container(detail::data_address_container{
                      type, type.get_wrapped_type(),
                      detail::as_void_ptr(detail::raw_addressof(data)), detail::as_void_ptr(detail::wrapped_raw_addressof(data))
